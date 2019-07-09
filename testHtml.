@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Get table row data with jquery</title>
+        <meta charset="utf-8" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+
+        <style>
+            #container{
+                margin:0 auto;
+                width:80%;
+                overflow:auto;
+            }
+            table.gridtable {
+                margin:0 auto;
+                width:95%;
+                overflow:auto;
+                font-family: helvetica,arial,sans-serif;
+                font-size:14px;
+                color:#333333;
+                border-width: 1px;
+                border-color: #666666;
+                border-collapse: collapse;
+                text-align: center;
+            } 
+            table.gridtable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #F6B4A5;
+            }
+            table.gridtable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+            }
+            tr.selected {background-color: #D8DA5C}
+			
+			fieldset {
+  padding: 1em;
+  font:80%/1 sans-serif;
+  }
+
+ .hide {
+ display:none;
+} 
+
+
+#legendLabel {
+  font-size:90%;
+  border : none;
+  background :none;
+  }
+  
+  
+   /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+} 
+        </style>
+    </head>
+
+    <body>
+	
+	<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'T1')">T1</button>
+    <button class="tablinks" onclick="openTab(event, 'T2')">T2</button>
+    <button class="tablinks" onclick="openTab(event, 'T3')">T3</button>
+    </div>
+	<div id="T1" class ="tabcontent" style="display:block;">
+        <div class="container" id="container">
+			<table class="gridtable" id="tableMain">
+                <thead>
+				    <tr>
+					<th rowspan="2"> </th>
+					 <th colspan="2">head1</th>
+                     <th colspan="2">head2</th>
+					</tr>
+                    <tr class="tableheader">
+                        <th >column1</th>
+                        <th>column2</th>
+                        <th>column3</th>
+                        <th>column4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="datarow">
+                        <th>Australia</th>
+                        <td>USA</td>
+                        <td>England</td>
+                        <td>France</td>
+                        <td>Spain</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Belgium</th>
+                        <td>India</td>
+                        <td>Switzerland</td>
+                        <td>New Zealand</td>
+                        <td>Brazil</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>South Korea</th>
+                        <td>South Africa</td>
+                        <td>Poland</td>
+                        <td>Canada</td>
+                        <td>Mexico</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Russia</th>
+                        <td>Senegal</td>
+                        <td>Kenya</td>
+                        <td>Argentina</td>
+                        <td>Nigeria</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Portugal</th>
+                        <td>Peru</td>
+                        <td>Libya</td>
+                        <td>China</td>
+                        <td>Japan</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+ <fieldset id="fieldsetDetail">
+		  <legend id="legendDetail"><input type="text" id="legendLabel" /></legend>
+		<table class="gridtable" id="tableDetail">
+                 <thead>
+				    <tr>
+					<th rowspan="2"> </th>
+					 <th colspan="2">head1</th>
+                     <th colspan="2">head2</th>
+					</tr>
+                    <tr class="tableheader">
+                        <th >column1</th>
+                        <th>column2</th>
+                        <th>column3</th>
+                        <th>column4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="datarow">
+                        <th>Australia</th>
+                        <td>USA</td>
+                        <td>England</td>
+                        <td>France</td>
+                        <td>Spain</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Belgium</th>
+                        <td>India</td>
+                        <td>Switzerland</td>
+                        <td>New Zealand</td>
+                        <td>Brazil</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>South Korea</th>
+                        <td>South Africa</td>
+                        <td>Poland</td>
+                        <td>Canada</td>
+                        <td>Mexico</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Russia</th>
+                        <td>Senegal</td>
+                        <td>Kenya</td>
+                        <td>Argentina</td>
+                        <td>Nigeria</td>
+                    </tr>
+                    <tr class="datarow">
+                        <th>Portugal</th>
+                        <td>Peru</td>
+                        <td>Libya</td>
+                        <td>China</td>
+                        <td>Japan</td>
+                    </tr>
+                </tbody>
+            </table>
+			</fieldset>
+		</div>
+<div id="T2" class ="tabcontent">
+
+</div>
+<div id="T3" class ="tabcontent">
+
+</div>		
+		<script>		
+            $(document).ready(function () {	
+                document.getElementById('fieldsetDetail').classList.add('hide');
+				//=================================================================
+                //click on table body
+				$('#tableMain tbody').on('click', 'tr', function() {
+				
+				    $(this).addClass('selected').siblings().removeClass('selected');
+					//get row contents into an array
+                    var tableData = $(this).children("th").map(function() {
+                        return $(this).text();
+                    }).get();
+                    document.getElementById('fieldsetDetail').classList.remove('hide');
+					var selection = tableData[0] ;
+					var dataset = $('#tableDetail tbody').find('tr');
+					document.getElementById('legendLabel').value = selection;
+					document.getElementById('legendLabel').size = selection.length;
+
+					// show all rows first
+					dataset.show();
+					// filter the rows that should be hidden
+					dataset.filter(function(index, item) {
+					  return $(item).find('th:first-child').text().indexOf(selection) === -1;
+					}).hide();
+				});
+			});	
+			
+			function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
+		</script>
+		
+	
+    </body>
+</html>
+
