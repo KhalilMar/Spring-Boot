@@ -1,0 +1,15 @@
+https://ebics.sgbb.socgen.com/ebics/EbicsServlet
+https://ebics.sgbbe.socgen.com/ebics/EbicsServlet
+https://ebics.sgbci.socgen.com/ebics/EbicsServlet
+https://ebics.sgssb.socgen.com/ebics/EbicsServlet
+https://ebics.sgbge.socgen.com/ebics/EbicsServlet
+https://ebics.sgm.socgen.com/ebics/EbicsServlet
+https://ebics.sgbs.socgen.com/ebics/EbicsServlet
+https://ebics.bfvsg.socgen.com/ebics/EbicsServlet
+https://ebics.sgbc.socgen.com/ebics/EbicsServlet
+https://ebics.sgc.socgen.com/ebics/EbicsServlet
+https://ebics.sgt.socgen.com/ebics/EbicsServlet
+https://sogecash-ebics.societegenerale.ci/ebics/EbicsServlet
+https://simba.etece.socgen.com/ebics/EbicsServlet
+
+https://sogecash-ebics.societegenerale.com/ebics/EbicsServlet
