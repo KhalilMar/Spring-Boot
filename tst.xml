@@ -1,0 +1,64 @@
+Le début des traitements reçus en FTP/SFTP est déclenché par le dépôt de ces derniers dans les « mail boxes » par le client.
+ETECE_FTP_ACQ  est le point d’entrée de ces flux là.
+En plus des contrôles établie sur le client  à savoir l’existence de l’abonnement la validité de la nature de flux il y’a un contrôle sur l’état des fichiers permettant de rejeter les flux qui ne respecte pas le chiffrement paramétré dans leur abonnement.
+En effet si le fichier est chiffré et l’abonnement ne prévoit pas de déchiffrement le flux est rejetée avant le déclenchement des prétraitements :
+Requête :
+
+Commande sh :
+
+
+
+Après on se base sur la requête suivante pour déclencher les prétraitements en se basant sur les champs ordre (le prétraitement avec l’ordre le plus grand est exécutée en premier)
+Requête :
+
+
+Remarque : 
+Même si le BP est flexible sur l’ordre d’exécution des prétraitements. L’ordre est figé sur l’IHM et dépend de la modalité de préparation 
+Ecran IHM :
+
+
+Ordre Attendue :
+
+
+Chiffrement :
+ETECE_FILE_DECRYPT 
+
+¨pour déterminer le format on fait appel au script FormatFile.sh qui se base dans le cas des fichiers ASCII sur l’entête du message.
+
+En effet si le fichier commence par « PGP » c’est du PGP
+Sinn « Begin Certificate » c’est du SSL.
+Après on cherche dans la table selon le cas la liste des clé privée paramétré pour l’abonné 
+Requête PGP :
+Requête SSL :
+
+On essaye avec chaque ligne du résultat de déchiffré le fichier.
+Cas PGP : script lancée DecryptFilePGP.sh
+Qui fait appel a un jar dans gis pour décodé la passphrase et appel en suite le script gpgutil.sh avec l’option –d
+
+
+
+Cas SSL : Script DecryptFileSSL.sh
+
+
+
+
+
+
+Vérification de signature Bancaire :
+Pour la signature bancaire il n’y a que du SSL
+Appel du script valid_signature 
+Pour vérification de la signature du fichier et récupération des informations CN et issuer DN
+Avec les informations récupérées dans l’étape suivante on essaye de faire le rapprochement  
+Requête :
+
+Après appel 
+
+Vérification  de signature Technique :
+Appel script getCNFingerprint  avec le format en entrée 
+Pour récupérer le fingerprint de la clé en cas du PGP et cn dn pour cas SSL
+
+Requête de rapprochement 
+
+
+
+
